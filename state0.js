@@ -9,20 +9,30 @@ demo.state0.prototype = {
         game.stage.backgroundColor = '#000000';
         console.log('state0');
         
+        // add function to change state
         addChangeStateEventListener();
+        // Phaser scale to all screens
+        game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
         
     },
     update : function(){}
 };
 
 
+// function to add state
+
 function changeState(i, stateNum){
     game.state.start('state' + stateNum);
 }
 
+//function to add key to change state
+
 function addKeyCallback(key, fn, args){
     game.input.keyboard.addKey(key).onDown.add(fn, null, null, args)
 }
+
+
+// function to add change states
 
 function addChangeStateEventListener(){
     
