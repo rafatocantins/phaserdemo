@@ -1,10 +1,13 @@
  //object
-var demo = {};
+var demo = {}, centerX = 1500/2, centerY = 1000 / 2, rafael, speed = 4;
+// var to set location ex. 0,0 top left corner
 
 demo.state0 = function(){};
 // object with three functions
 demo.state0.prototype = {
-    preload : function(){},
+    preload : function(){
+        game.load.image('rafael', 'assets/sprites/adam.png');
+    },
     create : function(){
         game.stage.backgroundColor = '#000000';
         console.log('state0');
@@ -14,8 +17,22 @@ demo.state0.prototype = {
         // Phaser scale to all screens
         game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
         
+        rafael = game.add.sprite(centerX, centerY, 'rafael');
+        // set location to center
+       /*rafael.anchor.x = 0.5;
+        rafael.anchor.y = 0.5;*/
+        
+        // one line to set center
+        rafael.anchor.setTo(0.5, 0.5);
+        
     },
-    update : function(){}
+    update : function(){
+        if(game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
+            rafael.x += speed;
+        }else if(game.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
+            rafael.x -= speed;
+        }
+    }
 };
 
 
